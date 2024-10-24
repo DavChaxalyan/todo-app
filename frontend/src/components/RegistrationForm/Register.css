@@ -1,0 +1,11 @@
+.d-contents {
+    display: contents !important;
+}
+
+.for-register {
+    max-width: 100% !important;
+    margin: 0 !important;
+    background-image: url(../../assets/images/register-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

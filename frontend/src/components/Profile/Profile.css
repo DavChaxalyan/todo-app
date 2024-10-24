@@ -1,0 +1,95 @@
+.profile-btn {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    outline: none;
+  }
+  
+  .profile-btn.edit {
+    background-color: #007bff;
+  }
+  
+  .profile-btn.edit:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .profile-btn.cancel {
+    background-color: #dc3545;
+  }
+  
+  .profile-btn.cancel:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+  }
+  
+  .save-btn {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: #28a745;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    outline: none;
+  }
+  
+  .save-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+
+  input[type="file"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .profile-edit-block {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .editingProfile {
+    height: 36px !important;
+    overflow: visible !important;
+    margin-left: 10px !important;
+    background-color: black !important;
+    border: none !important;
+    color: white !important;
+  }
+
+  .editingProfile:hover {
+    background-color: rgb(114, 112, 112) !important;
+  }
+
+  .notEditingProfile {
+    background-color: white !important;
+    border: 1px solid black !important;
+    color: black !important;
+    height: 36px !important;
+    overflow: visible !important;
+    margin-left: 10px !important;
+  }
+
+  .notEditingProfile:hover {
+    background-color: rgb(180, 178, 178) !important;
+  }
+
+  .save-button-profile {
+    background-color: green !important;
+    border: none !important;
+  }
+
+  .save-button-profile:hover {
+    background-color: rgb(37, 177, 37) !important;
+    border: none !important;
+  }

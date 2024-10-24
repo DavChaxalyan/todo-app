@@ -1,0 +1,24 @@
+.main-friends-block {
+  margin-top: 100px !important;
+}
+
+.no-friends-message {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.no-friends-image {
+  width: 150px; 
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.no-friends-message h3 {
+  font-size: 1.5em;
+  color: #333; 
+}
+
+.no-friends-message p {
+  font-size: 1.2em;
+  color: #555; 
+}
