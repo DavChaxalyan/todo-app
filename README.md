@@ -35,23 +35,25 @@ Todo App is a fully functional web application built using React and Express, al
    cd todo-app
    
 ### Install dependencies for the frontend and backend:
-
-## bash
-
-cd frontend
-npm install
-cd ../backend
-npm install
+1. Frontend:
+   ```bash
+   cd frontend
+   npm install
+2. Backend:
+   ```bash
+   cd ../backend
+   npm install
 
 ## install MongoDB
 Set up MongoDB. You can install MongoDB locally or use a cloud service like MongoDB Atlas.
 Installing Local MongoDB
 Download and install MongoDB from the official website: MongoDB Download Center.
 Follow the instructions for your operating system to install and run MongoDB.
-Ensure that the MongoDB server is running using the command:
 
-## bash
-mongod
+Ensure that the MongoDB server is running using the command:
+1. Backend
+   ```bash
+   mongod
 
 Create a .env file in the root of the backend folder and add the following environment variables:
 ## .env
@@ -62,14 +64,17 @@ EMAIL_USER=your_email@example.com  # your email address
 EMAIL_PASS=your_email_password  # your application password
 
 Start the development server for the backend:
-## bash
-cd backend
-node server.js
+1. Start Backend
+   ```bash
+   cd backend
+   node server.js
 
 In a separate terminal, run the frontend:
-## bash
-cd frontend
-npm start
+1. Start Frontend
+   ```bash
+   cd frontend
+   npm start   
+
 Now you can open the application in your browser at http://localhost:3000.
 
 ## Using All Features
