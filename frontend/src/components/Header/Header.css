@@ -1,0 +1,48 @@
+.navbar-dark .nav-item .nav-link {
+    color: #fff;
+  }
+
+  .main-header-block {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  .navbar-dark .nav-item .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    border-radius: 0.25rem;
+    color: #fff;
+  }
+  
+  .fa-li {
+    position: relative;
+    left: 0;
+  }
+
+  .dropdown-menu.show {
+    position: absolute;
+    left: 10px;
+}
+
+.profileIcon {
+    margin-right: 90px;
+}
+
+.modal-add-friends {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 640px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.button_decline {
+    background-color: rgb(104, 4, 4) !important;
+    border: none;
+}
+
+.button_accept {
+    background-color: rgb(47, 168, 17) !important;
+    border: none;
+}

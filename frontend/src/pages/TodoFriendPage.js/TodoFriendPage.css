@@ -1,0 +1,20 @@
+.completed-todo {
+    background-color: #e0f7e0; 
+    text-decoration: line-through; 
+}
+
+.friend-todo-title-block {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.iconLike {
+    fill: red;
+}
+
+.main-like-block {
+    background-color: #d5d5d5 !important;
+    border: none !important;
+    color: black !important;
+}

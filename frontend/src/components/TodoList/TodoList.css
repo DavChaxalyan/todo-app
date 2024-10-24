@@ -1,0 +1,28 @@
+.main-todos-block {
+    margin-top: 50px;
+}
+
+.list-todo-lists {
+    max-height: 523px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.main-likes-block-todo {
+    padding: 2px 7px !important;
+    background-color: #000000 !important;
+    border-radius: 10px !important;
+    color: white !important;
+    cursor: pointer !important;
+    border: none !important;
+}
+
+.main-comments-block-todo {
+    margin-top: 5px !important;
+    padding: 2px 7px !important;
+    background-color: #000000 !important;
+    border-radius: 10px !important;
+    color: white !important;
+    cursor: pointer !important;
+    border: none !important;
+}

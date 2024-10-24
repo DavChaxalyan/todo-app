@@ -1,0 +1,25 @@
+@media (max-width: 992px) {
+  .navbar-block {
+    display: none !important;
+  }
+  .profileIcon {
+    display: flex;
+    flex-direction: row;
+    margin-right: 0;
+  }
+  .dropdown-menu.show {
+    left: -7px;
+  }
+  .main-navbar-items {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  .navbar-block.open {
+    flex-wrap: wrap;
+  }
+}
+
+.navbar-block.open {
+  display: flex !important;
+}
