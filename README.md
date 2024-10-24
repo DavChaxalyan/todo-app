@@ -58,9 +58,9 @@ Ensure that the MongoDB server is running using the command:
 Create a .env file in the root of the backend folder and add the following environment variables:
 ## .env
 
-MONGO_URI=mongodb://localhost:27017/.
-JWT_SECRET=your_jwt_secret  # replace with your secret.
-EMAIL_USER=your_email@example.com  # your email address.
+MONGO_URI=mongodb://localhost:27017/<br>
+JWT_SECRET=your_jwt_secret  # replace with your secret<br>
+EMAIL_USER=your_email@example.com  # your email address<br>
 EMAIL_PASS=your_email_password  # your application password.
 
 Start the development server for the backend:
