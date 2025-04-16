@@ -1,5 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Card, Spinner, Button, Form } from "react-bootstrap";
+import React, { useCallback, useEffect, useState } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Spinner,
+  Button,
+  Form,
+} from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./TodoFriendPage.css";
@@ -16,9 +24,8 @@ const TodoFriendPage = () => {
   const [loading, setLoading] = useState(true);
   const [friend, setFriend] = useState(null);
   const [userId, setUserId] = useState(null);
-  const [error, setError] = useState(null);
   const [showComments, setShowComments] = useState({});
-  const [comments, setComments] = useState({}); 
+  const [comments, setComments] = useState({});
   const [commentsData, setCommentsData] = useState({});
   const navigate = useNavigate();
 
@@ -33,7 +40,7 @@ const TodoFriendPage = () => {
     }));
   };
 
-  const fetchFriendTodos = async () => {
+  const fetchFriendTodos = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
@@ -46,13 +53,13 @@ const TodoFriendPage = () => {
       );
       setFriendTodos(response.data);
     } catch (err) {
-      setError(err.message);
+      console.error("Error loading:", err);
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
 
-  const fetchFriendProfile = async () => {
+  const fetchFriendProfile = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
@@ -68,22 +75,21 @@ const TodoFriendPage = () => {
       setLoading(false);
     } catch (error) {
       console.error("Error loading friends profile:", error);
-      setError("Error loading profile.");
       setLoading(false);
     }
-  };
+  }, [id]);
 
   const handleLike = async (todo) => {
-    const todoId = todo._id
+    const todoId = todo._id;
     try {
       const token = localStorage.getItem("token");
       if (todo?.likes?.includes(userId)) {
         await axios.delete(`http://localhost:5000/api/todo/${todoId}/unlike`, {
           headers: {
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
           data: {
-            senderId: userId, 
+            senderId: userId,
           },
         });
       } else {
@@ -97,7 +103,7 @@ const TodoFriendPage = () => {
           }
         );
       }
-      fetchFriendTodos(); 
+      fetchFriendTodos();
     } catch (err) {
       console.error("Error liking todo:", err);
     }
@@ -115,8 +121,8 @@ const TodoFriendPage = () => {
           },
         }
       );
-      setComments((prev) => ({ ...prev, [todoId]: "" })); 
-      fetchFriendTodos(); 
+      setComments((prev) => ({ ...prev, [todoId]: "" }));
+      fetchFriendTodos();
     } catch (err) {
       console.error("Error commenting on todo:", err);
     }
@@ -125,14 +131,17 @@ const TodoFriendPage = () => {
   const handleCommentDelete = async (todoId, commentId) => {
     try {
       const token = localStorage.getItem("token");
-  
-      await axios.delete(`http://localhost:5000/api/todo/${todoId}/comments/${commentId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-  
-      fetchFriendTodos(); 
+
+      await axios.delete(
+        `http://localhost:5000/api/todo/${todoId}/comments/${commentId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      fetchFriendTodos();
     } catch (err) {
       console.error("Error deleting comment:", err);
     }
@@ -160,18 +169,18 @@ const TodoFriendPage = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-      if (token) {
-        const decodedToken = jwtDecode(token);
-        setUserId(decodedToken.id);
-      }
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setUserId(decodedToken.id);
+    }
     fetchFriendProfile();
     fetchFriendTodos();
-  }, [id]);
+  }, [id, fetchFriendProfile, fetchFriendTodos]);
 
   useEffect(() => {
     if (friendTodos) {
       friendTodos.forEach((todo) => {
-        fetchComments(todo._id); 
+        fetchComments(todo._id);
       });
     }
   }, [friendTodos]);
@@ -186,7 +195,7 @@ const TodoFriendPage = () => {
 
   return (
     <Container className="mt-4">
-      <h1 className='text-white'>Todo List Your Friend</h1>
+      <h1 className="text-white">Todo List Your Friend</h1>
       {friend ? (
         <div className="friend-todo-title-block">
           <Card.Img
@@ -201,7 +210,10 @@ const TodoFriendPage = () => {
             style={{ cursor: "pointer", height: "80px", width: "80px" }}
             onClick={handlePage}
           />
-          <h2 style={{ cursor: "pointer", color: 'white' }} onClick={handlePage}>
+          <h2
+            style={{ cursor: "pointer", color: "white" }}
+            onClick={handlePage}
+          >
             {friend.name}
           </h2>
         </div>
@@ -235,9 +247,11 @@ const TodoFriendPage = () => {
                     className="mr-2 d-flex align-items-center gap-2 main-like-block"
                     disabled={todo.completed}
                   >
-                    {
-                      todo?.likes?.includes(userId) ? <FaHeart className="iconLike" /> : <FaRegHeart className="iconLike" />
-                    }
+                    {todo?.likes?.includes(userId) ? (
+                      <FaHeart className="iconLike" />
+                    ) : (
+                      <FaRegHeart className="iconLike" />
+                    )}
                     {todo.likes.length || 0}
                   </Button>
                   <Form
@@ -251,7 +265,7 @@ const TodoFriendPage = () => {
                       <Form.Control
                         type="text"
                         placeholder="Leave a comment"
-                        value={comments[todo._id] || ""} 
+                        value={comments[todo._id] || ""}
                         onChange={(e) =>
                           setComments((prev) => ({
                             ...prev,
@@ -261,42 +275,91 @@ const TodoFriendPage = () => {
                         disabled={todo.completed}
                       />
                     </Form.Group>
-                    <Button className="mt-1" variant="success" type="submit" disabled={todo.completed}>
+                    <Button
+                      className="mt-1"
+                      variant="success"
+                      type="submit"
+                      disabled={todo.completed}
+                    >
                       Submit Comment
                     </Button>
                   </Form>
                   {/* Display Comments */}
                   <div className="comments-section mt-2">
-                    {commentsData[todo._id] && commentsData[todo._id].length > 0 ? (
+                    {commentsData[todo._id] &&
+                    commentsData[todo._id].length > 0 ? (
                       <>
-                        <Button onClick={() => toggleComments(todo._id)} disabled={!commentsData[todo._id].length > 0 || todo.completed}>
-                          {showComments[todo._id] ? "Hide Comments" : `Show Comments (${commentsData[todo._id].length})`}
+                        <Button
+                          onClick={() => toggleComments(todo._id)}
+                          disabled={
+                            !commentsData[todo._id].length > 0 || todo.completed
+                          }
+                        >
+                          {showComments[todo._id]
+                            ? "Hide Comments"
+                            : `Show Comments (${
+                                commentsData[todo._id].length
+                              })`}
                         </Button>
-                        {showComments[todo._id] && commentsData[todo._id].map((comment) => (
-                          <div key={comment._id} className="comment mt-2">
-                            <div className="d-flex align-items-center">
-                              <img src={comment.user.profileImage || ""} alt="" /> 
-                              <strong>{comment.user._id === userId ? '(You)' : comment.user.name}:</strong>
-                              <span>{comment.text}</span>
-                              {comment.user._id === userId ?( 
-                              <RiDeleteBinLine style={{ fill: 'red', fontSize: '20px', cursor: 'pointer', marginLeft: '10px'}} onClick={() => handleCommentDelete(todo._id, comment._id)}/>
-                              ) : <></>}
+                        {showComments[todo._id] &&
+                          commentsData[todo._id].map((comment) => (
+                            <div key={comment._id} className="comment mt-2">
+                              <div className="d-flex align-items-center">
+                                <img
+                                  src={comment.user.profileImage || ""}
+                                  alt=""
+                                />
+                                <strong>
+                                  {comment.user._id === userId
+                                    ? "(You)"
+                                    : comment.user.name}
+                                  :
+                                </strong>
+                                <span>{comment.text}</span>
+                                {comment.user._id === userId ? (
+                                  <RiDeleteBinLine
+                                    style={{
+                                      fill: "red",
+                                      fontSize: "20px",
+                                      cursor: "pointer",
+                                      marginLeft: "10px",
+                                    }}
+                                    onClick={() =>
+                                      handleCommentDelete(todo._id, comment._id)
+                                    }
+                                  />
+                                ) : (
+                                  <></>
+                                )}
+                              </div>
+                              <p
+                                style={{
+                                  fontSize: "11px",
+                                  marginBottom: "0px",
+                                }}
+                              >
+                                {new Date(comment.createdAt).toLocaleString(
+                                  "en-US",
+                                  {
+                                    day: "numeric",
+                                    month: "long",
+                                    year: "numeric",
+                                    hour: "numeric",
+                                    minute: "numeric",
+                                    hour12: true,
+                                  }
+                                )}
+                              </p>
                             </div>
-                            <p style={{ fontSize: "11px", marginBottom: '0px' }}>
-                              {new Date(comment.createdAt).toLocaleString("en-US", {
-                                day: "numeric",
-                                month: "long",
-                                year: "numeric",
-                                hour: "numeric",
-                                minute: "numeric",
-                                hour12: true,
-                              })}
-                            </p>
-                          </div>
-                        ))}
+                          ))}
                       </>
                     ) : (
-                      <Button disabled={!commentsData[todo._id]?.length > 0} onClick={() => toggleComments(todo._id)}>Show Comments (0)</Button>
+                      <Button
+                        disabled={!commentsData[todo._id]?.length > 0}
+                        onClick={() => toggleComments(todo._id)}
+                      >
+                        Show Comments (0)
+                      </Button>
                     )}
                   </div>
                 </Card.Body>
