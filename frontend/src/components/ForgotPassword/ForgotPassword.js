@@ -13,7 +13,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/forgot-password', { email });
+      const response = await axios.post('https://todo-app-yuun.onrender.com/api/forgot-password', { email });
       setMessage(response.data.message);
       setError('');
     } catch (err) {

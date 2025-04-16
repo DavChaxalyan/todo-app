@@ -32,7 +32,7 @@ const NotificationsModal = ({ showNotificationsModal, handleCloseNotificationsMo
                   <img
                     src={
                       notification.profileImage
-                        ? `http://localhost:5000/${notification.profileImage}`
+                        ? `https://todo-app-yuun.onrender.com/${notification.profileImage}`
                         : imageProfile
                     }
                     alt={notification.senderName}

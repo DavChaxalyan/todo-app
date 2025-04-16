@@ -44,7 +44,7 @@ const TodoFriendPage = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://localhost:5000/api/friend/todos/${id}`,
+        `https://todo-app-yuun.onrender.com/api/friend/todos/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ const TodoFriendPage = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://localhost:5000/api/friends/viewProfile/${id}`,
+        `https://todo-app-yuun.onrender.com/api/friends/viewProfile/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -84,7 +84,7 @@ const TodoFriendPage = () => {
     try {
       const token = localStorage.getItem("token");
       if (todo?.likes?.includes(userId)) {
-        await axios.delete(`http://localhost:5000/api/todo/${todoId}/unlike`, {
+        await axios.delete(`https://todo-app-yuun.onrender.com/api/todo/${todoId}/unlike`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -94,7 +94,7 @@ const TodoFriendPage = () => {
         });
       } else {
         await axios.post(
-          `http://localhost:5000/api/todo/${todoId}/like`,
+          `https://todo-app-yuun.onrender.com/api/todo/${todoId}/like`,
           { userId: id, senderId: userId },
           {
             headers: {
@@ -113,7 +113,7 @@ const TodoFriendPage = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        `http://localhost:5000/api/todo/${todoId}/comment`,
+        `https://todo-app-yuun.onrender.com/api/todo/${todoId}/comment`,
         { text: comments[todoId] || "", userId: id, senderId: userId },
         {
           headers: {
@@ -133,7 +133,7 @@ const TodoFriendPage = () => {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/api/todo/${todoId}/comments/${commentId}`,
+        `https://todo-app-yuun.onrender.com/api/todo/${todoId}/comments/${commentId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -151,7 +151,7 @@ const TodoFriendPage = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://localhost:5000/api/todo/${todoId}/comments`,
+        `https://todo-app-yuun.onrender.com/api/todo/${todoId}/comments`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -202,7 +202,7 @@ const TodoFriendPage = () => {
             variant="top"
             src={
               friend.profileImage
-                ? `http://localhost:5000/${friend.profileImage}`
+                ? `https://todo-app-yuun.onrender.com/${friend.profileImage}`
                 : emptyImage
             }
             alt={friend.name}

@@ -39,7 +39,7 @@ const Header = () => {
           setUserId(userId);
         }
         const response = await axios.get(
-          `http://localhost:5000/api/users/search?name=${searchTerm}`,
+          `https://todo-app-yuun.onrender.com/api/users/search?name=${searchTerm}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -47,14 +47,14 @@ const Header = () => {
           }
         );
 
-        const resp = await axios.get("http://localhost:5000/api/friends", {
+        const resp = await axios.get("https://todo-app-yuun.onrender.com/api/friends", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
         const res = await axios.get(
-          "http://localhost:5000/api/notifications/all",
+          "https://todo-app-yuun.onrender.com/api/notifications/all",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -99,7 +99,7 @@ const Header = () => {
     const fetchUserData = async () => {
         try {
           const token = localStorage.getItem('token'); 
-          const response = await axios.get('http://localhost:5000/api/profile', {
+          const response = await axios.get('https://todo-app-yuun.onrender.com/api/profile', {
             headers: {
               'Authorization': `Bearer ${token}` 
             }
@@ -123,7 +123,7 @@ const Header = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://localhost:5000/api/check-request?userId=${userId}`,
+        `https://todo-app-yuun.onrender.com/api/check-request?userId=${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -137,7 +137,7 @@ const Header = () => {
       }
 
       await axios.post(
-        `http://localhost:5000/api/send-friend-request`,
+        `https://todo-app-yuun.onrender.com/api/send-friend-request`,
         { user },
         {
           headers: {
@@ -161,7 +161,7 @@ const Header = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://localhost:5000/api/notifications`,
+        `https://todo-app-yuun.onrender.com/api/notifications`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -186,7 +186,7 @@ const Header = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        `http://localhost:5000/api/friend-requests/respond`,
+        `https://todo-app-yuun.onrender.com/api/friend-requests/respond`,
         { notificationId },
         {
           headers: {
@@ -207,7 +207,7 @@ const Header = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.delete(
-        `http://localhost:5000/api/delete-notification/${notificationId}`,
+        `https://todo-app-yuun.onrender.com/api/delete-notification/${notificationId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

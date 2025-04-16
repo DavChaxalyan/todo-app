@@ -21,7 +21,7 @@ const ResetPassword = () => {
             setError("Passwords do not match");
             return;
         }
-      const response = await axios.post(`http://localhost:5000/api/reset-password/${token}`, { newPassword });
+      const response = await axios.post(`https://todo-app-yuun.onrender.com/api/reset-password/${token}`, { newPassword });
       setMessage(response.data.message);
       setError('');
       setTimeout(() => {

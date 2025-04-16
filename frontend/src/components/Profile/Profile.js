@@ -68,7 +68,7 @@ const Profile = () => {
   
     try {
       const token = localStorage.getItem('token');
-      await axios.put('http://localhost:5000/api/change-password', {
+      await axios.put('https://todo-app-yuun.onrender.com/api/change-password', {
         currentPassword: passwordData.currentPassword,
         newPassword: passwordData.newPassword,
         userId: user._id
@@ -98,7 +98,7 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem('token'); 
-        const response = await axios.get('http://localhost:5000/api/profile', {
+        const response = await axios.get('https://todo-app-yuun.onrender.com/api/profile', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -114,7 +114,7 @@ const Profile = () => {
     const fetchTodoCount = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/todo', {
+        const response = await axios.get('https://todo-app-yuun.onrender.com/api/todo', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -129,7 +129,7 @@ const Profile = () => {
     const fetchFriendsCount = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/friends', {
+        const response = await axios.get('https://todo-app-yuun.onrender.com/api/friends', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -182,7 +182,7 @@ const Profile = () => {
 
     try {
       const token = localStorage.getItem('token'); 
-      await axios.put('http://localhost:5000/api/profile', formData, {
+      await axios.put('https://todo-app-yuun.onrender.com/api/profile', formData, {
         headers: {
           'Authorization': `Bearer ${token}`, 
           'Content-Type': 'multipart/form-data' 
@@ -219,7 +219,7 @@ const Profile = () => {
               <div className="rounded-top text-white d-flex flex-row" style={{ backgroundColor: '#000', height: '200px' }}>
                 <div className="ms-4 mt-5 d-flex flex-column" style={{ width: '150px' }}>
                 <MDBCardImage
-                    src={isEditing && image ? image : user.profileImage ? `http://localhost:5000/${user.profileImage}` : imageProfile}
+                    src={isEditing && image ? image : user.profileImage ? `https://todo-app-yuun.onrender.com/${user.profileImage}` : imageProfile}
                     alt="Profile image"
                     className="img-thumbnail"
                     fluid

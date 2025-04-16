@@ -34,7 +34,7 @@ const TodoList = () => {
   const handleShowLikes = async (todo) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get(`http://localhost:5000/api/todo/${todo._id}/likes`, {
+      const response = await axios.get(`https://todo-app-yuun.onrender.com/api/todo/${todo._id}/likes`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setLikesUsers(response.data);
@@ -49,7 +49,7 @@ const TodoList = () => {
   const handleShowComments = async (todo) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get(`http://localhost:5000/api/todo/${todo._id}/comments`, {
+      const response = await axios.get(`https://todo-app-yuun.onrender.com/api/todo/${todo._id}/comments`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -64,7 +64,7 @@ const TodoList = () => {
   const fetchTodos = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:5000/api/todo", {
+      const response = await axios.get("https://todo-app-yuun.onrender.com/api/todo", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTodos(response.data);
@@ -82,7 +82,7 @@ const TodoList = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.post(
-          "http://localhost:5000/api/todo",
+          "https://todo-app-yuun.onrender.com/api/todo",
           { title: newTodo },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -98,7 +98,7 @@ const TodoList = () => {
   const handleDeleteTodo = async (index, todoId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/todo/${todoId}`, {
+      await axios.delete(`https://todo-app-yuun.onrender.com/api/todo/${todoId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -120,7 +120,7 @@ const TodoList = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `http://localhost:5000/api/todo/${todoId}`,
+        `https://todo-app-yuun.onrender.com/api/todo/${todoId}`,
         { title: editedTodo },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -145,7 +145,7 @@ const TodoList = () => {
       const token = localStorage.getItem("token");
   
       await axios.put(
-        `http://localhost:5000/api/todo/${todoId}`,
+        `https://todo-app-yuun.onrender.com/api/todo/${todoId}`,
         {
           completed: isCompleted, 
         },
@@ -162,7 +162,7 @@ const TodoList = () => {
     try {
       const token = localStorage.getItem("token");
   
-      await axios.delete(`http://localhost:5000/api/todo/${todoId}/comments/${commentId}`, {
+      await axios.delete(`https://todo-app-yuun.onrender.com/api/todo/${todoId}/comments/${commentId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -309,7 +309,7 @@ const TodoList = () => {
             ) : (
               likesUsers.map((user, index) => (
                 <div key={user._id} className="mb-3">
-                  <img onClick={() => handleViewProfile(user._id)} style={{width: '200px', height: '200px', cursor: 'pointer'}} src={user.profileImage ? `http://localhost:5000/${user.profileImage}` : emptyImage} alt={user.name}/>
+                  <img onClick={() => handleViewProfile(user._id)} style={{width: '200px', height: '200px', cursor: 'pointer'}} src={user.profileImage ? `https://todo-app-yuun.onrender.com/${user.profileImage}` : emptyImage} alt={user.name}/>
                   <ListGroup.Item onClick={() => handleViewProfile(user._id)} style={{ cursor: 'pointer '}} key={index}>{user.name} ({user.email})</ListGroup.Item>
                 </div>
               ))

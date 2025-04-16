@@ -19,7 +19,7 @@ const Friends = () => {
     const fetchFriends = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/api/friends", {
+        const response = await axios.get("https://todo-app-yuun.onrender.com/api/friends", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -41,7 +41,7 @@ const Friends = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/api/friends/remove",
+        "https://todo-app-yuun.onrender.com/api/friends/remove",
         { friendId }, 
         {
           headers: {
@@ -114,7 +114,7 @@ const Friends = () => {
           {filteredFriends.map((friend) => (
             <div className="col-md-4" key={friend._id}>
               <Card className="mb-4">
-                <Card.Img variant="top" src={friend.profileImage ? `http://localhost:5000/${friend.profileImage}` : emptyImage} alt={friend.name} style={{height: '300px'}} />
+                <Card.Img variant="top" src={friend.profileImage ? `https://todo-app-yuun.onrender.com/${friend.profileImage}` : emptyImage} alt={friend.name} style={{height: '300px'}} />
                 <Card.Body>
                   <Card.Title>{friend.name}</Card.Title>
                   <Button

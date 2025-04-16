@@ -24,7 +24,7 @@ const FriendsProfile = () => {
     const fetchFriendProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://localhost:5000/api/friends/viewProfile/${id}`, {
+        const response = await axios.get(`https://todo-app-yuun.onrender.com/api/friends/viewProfile/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -65,7 +65,7 @@ const FriendsProfile = () => {
           <Card.Header className="text-center">
             <Card.Img 
               variant="top" 
-              src={friend && friend.profileImage ? `http://localhost:5000/${friend.profileImage}` : emptyImage} 
+              src={friend && friend.profileImage ? `https://todo-app-yuun.onrender.com/${friend.profileImage}` : emptyImage} 
               alt={friend.name} 
               className="friend-profile-img"
             />
@@ -87,7 +87,7 @@ const FriendsProfile = () => {
               {friend?.friends?.friends?.length > 0 ? (
                 friend?.friends?.friends?.map((f) => (
                   <ListGroup.Item key={f._id}>
-                    <img src={f.profileImage ? `http://localhost:5000/${f.profileImage}` : emptyImage} alt={f.name} className="mini-friend-img" />
+                    <img src={f.profileImage ? `https://todo-app-yuun.onrender.com/${f.profileImage}` : emptyImage} alt={f.name} className="mini-friend-img" />
                     <p style={{textAlign: 'center'}}>{f.name}</p>
                   </ListGroup.Item>
                 ))
