@@ -1,5 +1,7 @@
 # Todo App
 
+🔗 [View Live Site](https://todo-media.netlify.app)
+
 Todo App is a fully functional web application built using React and Express, allowing users to manage their tasks and interact with others through social features. The application includes user authentication, friend requests, notifications, and various task management capabilities.
 
 ## Key Features
@@ -95,7 +97,3 @@ See how notifications work when interacting with friends.
 5. Start interacting: Now you can like, comment, and test all the application’s features using both accounts.
    
 This will give you a chance to see how the application works in real user interactions.
-
-Site Url
-
-https://todo-media.netlify.app
