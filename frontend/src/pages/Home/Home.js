@@ -1,13 +1,23 @@
-import React from 'react';
-import { Container, Row, Col, Card, Button, ListGroup, Image } from 'react-bootstrap';
+import React from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  ListGroup,
+  Image,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import emptyImg from "../../assets/images/empty-avatar.png";
+import emptyImg2 from "../../assets/images/empty-avatarka.png";
+import "./HomePage.css";
 
 const Home = () => {
-
   const navigate = useNavigate();
   const handleChangePage = () => {
-    navigate('/todos')
-  }
+    navigate("/todos");
+  };
 
   return (
     <div>
@@ -16,7 +26,9 @@ const Home = () => {
         <Row>
           <Col>
             <h1 className="display-4">Welcome to ToDo App!</h1>
-            <p className="lead">Manage your tasks, connect with friends, and stay organized.</p>
+            <p className="lead">
+              Manage your tasks, connect with friends, and stay organized.
+            </p>
           </Col>
         </Row>
       </Container>
@@ -33,11 +45,13 @@ const Home = () => {
           <Col md={4}>
             <Card className="text-center">
               <Card.Body>
-                <Image src="https://via.placeholder.com/150" roundedCircle className="mb-3" />
+                <Image
+                  src={emptyImg}
+                  roundedCircle
+                  className="mb-3 empty-img-avatar"
+                />
                 <Card.Title>John Doe</Card.Title>
-                <Card.Text>
-                  Check out John's latest ToDo list.
-                </Card.Text>
+                <Card.Text>Check out John's latest ToDo list.</Card.Text>
                 <Button variant="outline-primary">View Profile</Button>
               </Card.Body>
             </Card>
@@ -45,11 +59,13 @@ const Home = () => {
           <Col md={4}>
             <Card className="text-center">
               <Card.Body>
-                <Image src="https://via.placeholder.com/150" roundedCircle className="mb-3" />
+                <Image
+                  src={emptyImg2}
+                  roundedCircle
+                  className="mb-3 empty-img-avatar"
+                />
                 <Card.Title>Jane Smith</Card.Title>
-                <Card.Text>
-                  Jane just completed a new task!
-                </Card.Text>
+                <Card.Text>Jane just completed a new task!</Card.Text>
                 <Button variant="outline-primary">View Profile</Button>
               </Card.Body>
             </Card>
@@ -57,11 +73,13 @@ const Home = () => {
           <Col md={4}>
             <Card className="text-center">
               <Card.Body>
-                <Image src="https://via.placeholder.com/150" roundedCircle className="mb-3" />
+                <Image
+                  src={emptyImg}
+                  roundedCircle
+                  className="mb-3 empty-img-avatar"
+                />
                 <Card.Title>Michael Brown</Card.Title>
-                <Card.Text>
-                  Michael added new tasks to his ToDo list.
-                </Card.Text>
+                <Card.Text>Michael added new tasks to his ToDo list.</Card.Text>
                 <Button variant="outline-primary">View Profile</Button>
               </Card.Body>
             </Card>
@@ -74,11 +92,19 @@ const Home = () => {
         <Row>
           <Col>
             <h2>Notifications</h2>
-            <p>See who added you as a friend and check other important updates.</p>
+            <p>
+              See who added you as a friend and check other important updates.
+            </p>
             <ListGroup>
-              <ListGroup.Item>John Doe sent you a friend request.</ListGroup.Item>
-              <ListGroup.Item>Jane Smith commented on your ToDo list.</ListGroup.Item>
-              <ListGroup.Item>Michael Brown liked your ToDo list.</ListGroup.Item>
+              <ListGroup.Item>
+                John Doe sent you a friend request.
+              </ListGroup.Item>
+              <ListGroup.Item>
+                Jane Smith commented on your ToDo list.
+              </ListGroup.Item>
+              <ListGroup.Item>
+                Michael Brown liked your ToDo list.
+              </ListGroup.Item>
             </ListGroup>
           </Col>
         </Row>
@@ -90,7 +116,14 @@ const Home = () => {
           <Col>
             <h2>Your ToDo Lists</h2>
             <p>Manage your tasks and stay organized.</p>
-            <Button onClick={handleChangePage} variant="success" size="lg" className="mb-3">Create New ToDo List</Button>
+            <Button
+              onClick={handleChangePage}
+              variant="success"
+              size="lg"
+              className="mb-3"
+            >
+              Create New ToDo List
+            </Button>
           </Col>
         </Row>
         <Row>
@@ -99,9 +132,12 @@ const Home = () => {
               <Card.Body>
                 <Card.Title>Work Tasks</Card.Title>
                 <Card.Text>
-                  Finish project report, prepare presentation, schedule meeting with client.
+                  Finish project report, prepare presentation, schedule meeting
+                  with client.
                 </Card.Text>
-                <Button variant="outline-warning" className="me-2">Edit</Button>
+                <Button variant="outline-warning" className="me-2">
+                  Edit
+                </Button>
                 <Button variant="outline-danger">Delete</Button>
               </Card.Body>
             </Card>
@@ -110,10 +146,10 @@ const Home = () => {
             <Card className="mb-3">
               <Card.Body>
                 <Card.Title>Personal Tasks</Card.Title>
-                <Card.Text>
-                  Buy groceries, clean the house, call mom.
-                </Card.Text>
-                <Button variant="outline-warning" className="me-2">Edit</Button>
+                <Card.Text>Buy groceries, clean the house, call mom.</Card.Text>
+                <Button variant="outline-warning" className="me-2">
+                  Edit
+                </Button>
                 <Button variant="outline-danger">Delete</Button>
               </Card.Body>
             </Card>
@@ -124,10 +160,10 @@ const Home = () => {
             <Card className="mb-3">
               <Card.Body>
                 <Card.Title>Fitness Goals</Card.Title>
-                <Card.Text>
-                  Go for a run, hit the gym, practice yoga.
-                </Card.Text>
-                <Button variant="outline-warning" className="me-2">Edit</Button>
+                <Card.Text>Go for a run, hit the gym, practice yoga.</Card.Text>
+                <Button variant="outline-warning" className="me-2">
+                  Edit
+                </Button>
                 <Button variant="outline-danger">Delete</Button>
               </Card.Body>
             </Card>
@@ -139,7 +175,9 @@ const Home = () => {
                 <Card.Text>
                   Book flights, pack bags, check passport expiration.
                 </Card.Text>
-                <Button variant="outline-warning" className="me-2">Edit</Button>
+                <Button variant="outline-warning" className="me-2">
+                  Edit
+                </Button>
                 <Button variant="outline-danger">Delete</Button>
               </Card.Body>
             </Card>
