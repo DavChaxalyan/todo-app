@@ -144,7 +144,7 @@ router.post("/forgot-password", async (req, res) => {
       expiresIn: "1h",
     });
 
-    const url = `http://localhost:3000/reset-password/${token}`;
+    const url = `https://todo-media.netlify.app/reset-password/${token}`;
 
     await transporter.sendMail({
       to: email,
