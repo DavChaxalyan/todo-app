@@ -5,7 +5,7 @@ import "./HelpPage.css"
 const HelpPage = () => {
   return (
     <Container className='main-container-help'>
-      <h1 className="mt-4">Help</h1>
+      <h1>Help</h1>
       <p>Welcome to the Help page! Here you will find information on how to use our project.</p>
 
       <Row className="mt-4 main-content-help">

@@ -17,9 +17,29 @@
   }
   .navbar-block.open {
     flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 10px;
   }
 }
 
 .navbar-block.open {
   display: flex !important;
+}
+
+@media (max-width: 742px) {
+  .profileIcon {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 596px) {
+  .main-navbar-items {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-users-input {
+    width: 100%;
+  }
 }

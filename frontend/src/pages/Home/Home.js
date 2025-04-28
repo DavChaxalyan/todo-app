@@ -41,7 +41,7 @@ const Home = () => {
             <p>Stay connected and see what your friends are working on.</p>
           </Col>
         </Row>
-        <Row>
+        <Row className="empty-cards-container">
           <Col md={4}>
             <Card className="text-center">
               <Card.Body>
@@ -95,7 +95,7 @@ const Home = () => {
             <p>
               See who added you as a friend and check other important updates.
             </p>
-            <ListGroup>
+            <ListGroup className="list-notifications">
               <ListGroup.Item>
                 John Doe sent you a friend request.
               </ListGroup.Item>

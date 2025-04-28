@@ -40,7 +40,7 @@ const HeaderNavbar = ({handlePage, handleSearch, searchTerm, setSearchTerm, user
             <Nav.Link onClick={() => handlePage('todos')}>My List</Nav.Link>
             <Nav.Link onClick={() => handlePage('friends')}>Friends</Nav.Link>
           </Nav>
-          <Form onSubmit={handleSearch} className="d-flex">
+          <Form onSubmit={handleSearch} className="d-flex search-users-input">
             <Form.Control
               type="text"
               placeholder="Search Users"

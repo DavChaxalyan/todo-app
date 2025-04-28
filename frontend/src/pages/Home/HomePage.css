@@ -2,3 +2,13 @@
     max-width: 100px;
     width: 100%;
 }
+
+@media (max-width: 767px){
+    .empty-cards-container {
+        gap: 20px;
+    }
+
+    .list-notifications {
+        gap: 15px;
+    }
+}
